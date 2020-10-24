@@ -1,0 +1,6 @@
+#*.rds
+.Rhistory
+.DS_Store
+*/.DS_Store
+.Rproj.user
+vignettes/cn_city_map.rds
