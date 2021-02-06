@@ -1,0 +1,34 @@
+Armillaria gallica FP102531 C6D 4.07  10.21  17.12  8.93
+Armillaria gallica EL8 A6F 3.20  1.89  15.42  4.54
+Armillaria gallica FP102534 A5A 2.94  6.09  11.00  5.81
+Armillaria gallica FP102535 A5D 3.78  7.23  12.30  6.95
+Armillaria gallica FP102542 A5B 2.35  5.90  9.20  5.03
+Armillaria gallica HHB12551 C6C 2.03  0.11  39.51  2.04
+Armillaria gallica OC1 A6E 2.29  1.92  9.26  3.44
+Armillaria gallica SH1 A4A 2.18  0.34  10.78  2.00
+Armillaria sinapina PR9 1.72  6.76  8.28  4.58
+Armillaria tabescens FP102622 A3C 3.56  0.14  13.28  1.89
+Armillaria tabescens TJV93 261 A1E 2.83  3.67  12.75  5.10
+Fomes fomentarius TJV93 7 A3E 10.41  21.26  47.24  21.87
+Hyphodontia crustosa HHB13392 B7B 4.29  13.38  13.62  9.21
+Hyphoderma setigerum HHB12156 B3H 5.64  6.28  12.45  7.61
+Hyphoderma setigerum FP150263 B2C 2.67  5.63  18.82  6.57
+Laetiporus conifericola HHB15411 C8B 2.29  20.28  7.60  7.07
+Lentinus crinitus PR2058 C1B 3.47  9.30  16.01  8.02
+Mycoacia meridionalis FP150352 C4E 2.16  5.67  7.96  4.60
+Merulius tremullosus FP102301 C3E 22.78  32.27  53.5  34.01
+Merulius tremellosus FP150849 C3F 13.52  15.95  43.91  21.15
+Phlebiopsis flavidoalba FP102185 B12D 11.18  18.52  27.94  17.95
+Phlebiopsis flavidoalba FP150451 A8G 6.40  8.89  25.93  11.38
+Phellinus gilvus HHB11977 C4H 5.15  19.47  42.09  16.16
+Phellinus hartigii DMR94 44 A10E 2.30  12.86  17.39  8.01
+Porodisculus pendulus HHB13576 B12C 2.61  2.43  4.36  3.02
+Phellinus robiniae FP135708 A10G 3.68  4.52  8.28  5.17
+Phellinus robiniae AZ15 A10H Banik/Mark 2.22  6.12  26.29  7.10
+Phlebia acerina MR4280 B9G * 11.88  24.59  16.18  16.78
+Phlebia acerina DR60 A8A * 5.97  21.10  73.39  20.98
+Pycnoporus sanguineus PR SC 95 A11C 4.44  18.30  37.43  14.49
+Schizophyllum commune TJV93 5 A10A 3.92  2.02  12.69  4.65
+Schizophyllum commune PR1117 2.55  3.32  6.87  3.88
+Tyromyces chioneus HHB11933 B10F 5.35  16.74  29.06  13.75
+Xylobolus subpileatus FP102567 A11A 2.17  7.45  8.55  5.17
