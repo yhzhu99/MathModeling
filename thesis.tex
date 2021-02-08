@@ -1,20 +1,20 @@
 \documentclass{mcmthesis}
 \mcmsetup{CTeX = true,   % 使用 CTeX 套装时，设置为 true
-        tcn = 0000, problem = A,
+        tcn = 2115481, problem = A,
         sheet = true, titleinsheet = true, keywordsinsheet = true,
         titlepage = false, abstract = true}
 \usepackage[UTF8]{ctex}
 \usepackage{newtxtext}%\usepackage{palatino}
 \usepackage{lipsum}
 \usepackage{cite}
+\usepackage{url}
 \usepackage[nottoc,notlot,notlof]{tocbibind}
 \title{MCM Thesis}
 \begin{document}
 \begin{abstract}
   Abstract here
 
-\cite{dynamics_of_a_new_SIR_epidemic_model}
-\cite{sutton1980coelomycetes}
+
 \begin{keywords}
 keyword1; keyword2
 \end{keywords}
@@ -34,25 +34,119 @@ keyword1; keyword2
 % \end{memo}
 
 \section{Introduction}
-\subsection{Problem Restatement}
-\subsection{Background Research}
-\subsection{Our Work}
+\subsection{Problem Background}
 
-\section{Preparation of the Models}
-\subsection{Assumptions and Justifications}
+The carbon cycle process is a very vital component of the planet. Part of the carbon cycle process is the decomposition of compounds, allowing carbon to be renewed and used in other forms. A key part of the decomposition of compounds comes from the decomposition of plant material and woody fibers. Some of the key agents in decomposing woody fibers are fungi. Studies have shown that among the many fungi traits, the growth rate of the fungus and the fungus' tolerance to moisture is the growth rate of the fungus and the fungus' tolerance to moisture. There are interesting correlations between fungi traits. And when different types of fungi coexist, they will affect each other. 
+
 \begin{figure}[h]
 \small
 \centering
-\includegraphics[width=8cm]{example-image-a}
-\caption{The name of figure} \label{fig:aa}
+\includegraphics[width=8cm]{carbon_cycle}
+\caption{A simple diagram of parts of the carbon cycle, emphasizing the terrestrial (land-based) parts of the cycle.\cite{carbon_cycle}}
+\label{carbon_cycle}
 \end{figure}
+
+Thus, our team is working to better understand the relationship between traits and the competitive role of different types of fungi coexisting. In addition, it is necessary to consider the possible long-term or short-term effects of various external conditions such as different climates, seasonal changes, sudden weather, etc. 
+
+There are many models for analyzing the relationship between various traits, such as time series, linear regression and so on. Fungi have their relatively suitable temperature, and they are sensitive to the external environment, so the model needs to be robust. For studying how the diversity of fungal communities of a system impacts the overall efficiency of a system, there are methods such as cellular automata for simulation. 
+
+This article studies these effects, based on our proposed model, we make predictions about the relative advantages and disadvantages for each species and combinations of species likely to persist and we realize the importance and the role of biodiversity in the presence of different degrees of variability in the local environment.
+
+\subsection{Restatement of the Problem}
+
+Based on the relevant conclusions in the research article given in the question, our paper should continue to explore and adress the following aspects. 
+
+\begin{itemize}
+  \item \textbf{Problem 1:}
+  Describe the breakdown of ground litter and woody fibers through fungal activity in the presence of multiple species of fungi.
+  \item \textbf{Problem 2:}
+  Incorporate the interactions between different species of fungi, which have different growth rates and different moisture tolerances.
+  \item \textbf{Problem 3:}
+  Describe the interactions between the different types of fungi. The dynamics of the interactions should be characterized and described including both short- and long-term trends. The sensitivity to rapid fluctuations in the environment should be examined and we have to determine the overall impact of changing atmospheric trends to assess the impact of variation of local weather patterns.
+  \item \textbf{Problem 4:}
+  Include predictions about the relative advantages and disadvantages for each species and combinations of species likely to persist, and do so for different environments.
+  \item \textbf{Problem 5:}
+  Describe how the diversity of fungal communities of a system impacts the overall efficiency of a system with respect to the breakdown of ground litter. Predict the importance and role of biodiversity in the presence of different degrees of variability in the local environment.
+\end{itemize}
+
+\subsection{Our Approach}
+
+As the question requires us, our primary goal is to model the decomposition of woody fibers in a given patch of land, and do so in the presence of multiple types of fungi breaking down woody fibers in the same area.
+
+We consider using a linear regression model to analyze the relationship between different traits (mainly focus on the growth rate of the fungus and the fungus' tolerance to moisture and temperature) of fungi, and their impact on the breakdown of ground litter and woody fibers. Since fungus are sensitive to external environment, and considering rapid fluctuations in the environment, we specially select a robust regression algorithm: Theil-Sen Regression. According to our evaluation, it performs much better than least squares method when outliers exist.
+
+Since the growth rate of fungi and the tolerance to moisture need to be considered comprehensively, we integrate this in our model. The relationship between fungal decomposition rate, growth rate and moisture tolerance is obtained by using multiple linear regression algorithm. 
+
+At the same time, we consider that usually different kinds of fungi coexist, and there is a competitive relationship between them. In the end, there may only be one kind of different kinds of fungi that will survive to the end. we describe the interactions between the different types of fungi and estabablishe a competition model, using cellular automata model to simulate the results of competition.
+
+To predict relative advantages and disadvantages for each species and combinations of species likely to persist, we combine models above. By changing the related parameters of temperature and moisture to simulate different environmental conditions, the dual-population competition model is extended to multiple groups, and the cellular automata algorithm is used to simulate the growth of multiple groups of fungi within a certain range. Then we consider the impact of short-term and long-term climate change, and further describe the long-term trend of fungal population changes with climate. 
+
+TODO
+
+\section{Preparation of the Models}
+
+\subsection{Assumptions and Justifications}
+
+By adequate analysis of the problem, to simplify our model, we make the following well-justified assumptions.
+
+\begin{itemize}
+  \item 
+\end{itemize}
+TODO
+
 \subsection{Notations}
 
-\section{Problem 1: Linear regression model}
+For convenience, we introduce some notations below.
+TODO
 
-The basic concept of linear regression model is that the sum of squares of the difference between the actual sampling and the linear prediction sampling reaches the minimum value, that is , the approximation of the minimum mean square error can determine the unique set of predictor coefficients.\cite{}
+\begin{table}[htb]
+  \centering
+  \caption{Notations}
+  \begin{center}
+    \begin{tabular}{cc}
+      \toprule[1.5pt]
+      \makebox[0.3\textwidth][c]{Symbols} & \makebox[0.4\textwidth][c]{Descriptions} \\
+      \midrule[1pt]
+      a & b \\
+      x & y \\
+      \bottomrule[1.5pt]
+    \end{tabular}
+  \end{center}
+\end{table}
 
-\subsection{The fundamentals of linear regression}
+\section{Problem 1: Single-factor Regression Model}
+
+\subsection{Feature Selection}
+
+In the decomposition process of ground litter and woody fibers, there are usually many kinds of fungi that work together. The quantification of the decomposition process can be described by the decomposition rate $ d $. For dead branches and leaves with a mass of $ M $, the total mass may change after the time $ t $. At any moment, its decomposition rate can be expressed as: 
+
+\begin{equation}
+  d=\frac{\delta M}{\delta t}
+\end{equation}
+
+For a given piece of land, the decomposition rate of fungi varies with the various traits of different types of fungi. In order to get the change trend of the decomposition rate and each trait first, we temporarily ignore the specific value and convert the original value into a sorted label to describe the corresponding size relationship. According to the data set, for each trait $ x $ and decomposition rate $ y $, the Spearman coefficient $ \rho $ is calculated, the algorithm is as follows: 
+
+\begin{equation}
+  \rho=\frac{\sum_{i}\left(x_{i}-\bar{x}\right)\left(y_{i}-\bar{y}\right)}{\sqrt{\sum_{i}\left(x_{i}-\bar{x}\right)^{2} \sum_{i}\left(y_{i}-\bar{y}\right)^{2}}}
+\end{equation}
+
+We sort the calculation results corresponding to each trait according to the Spearman coefficient. 
+
+\begin{figure}[h]
+  \small
+  \centering
+  \includegraphics[width=12cm]{growth_eco_traits}
+  \caption{The spearman correlation of different growth and ecological preformance traits}
+  \label{growth_eco_traits}
+\end{figure}
+
+The results show that the growth rate and moisture tolerance of fungi are closely related to the decomposition process. 
+
+Below, based on the decomposition data of 34 species of single fungus populations collected under the condition of coexistence of multiple fungi, we will regression and predict the decomposition rate of fungi, focusing on the growth rate of a single type of hyphae The relationship with decomposition rate, and the relationship between hyphae's moisture resistance and decomposition rate. 
+
+\subsection{The Fundamentals of Linear Regression}
+
+The basic concept of linear regression model is that the sum of squares of the difference between the actual sampling and the linear prediction sampling reaches the minimum value, that is , the approximation of the minimum mean square error can determine the unique set of predictor coefficients.\cite{cao2009linear}
 
 In the process of model parameter estimation, the following systems is called linear predictor.
 
@@ -152,6 +246,22 @@ We represent (\ref{alg_f}) as a matrix.
   r_{x}(p)
   \end{array}\right)
 \end{equation}
+
+\subsection{Decompostion Rate and Moisture Relationship}
+
+We normalize the size of the optimal moisture range of fungus as the abscissa, $ \text {mo}=\frac{2 \times \text {width }}{\text {maxwidth }}-1 $. The zero point is the center, -1 means the fungus has the strongest moisture adaptability, and 1 means the fungus has the narrowest suitable moisture range. Plotting a scatter plot shows that the moisture resistance and decomposition rate are negatively correlated. Combining the decomposition rate of various fungi with different moisture adaptability under the same experimental conditions, using one-variable linear regression, the linear equation obtained is 
+
+\begin{equation}
+  \log {d}=1.00mo+1.74,R^2=0.3981
+\end{equation}
+
+That is
+
+\begin{equation}
+  {d}=10 ^{1.00mo+1.74}
+\end{equation}
+
+It indicates that the greater the $mo $, the worse the adaptability of the fungus and the greater the decomposition rate. It also shows that the ability of fungi to adapt to moisture is negatively related to the decomposition rate. 
 
 
 \section{Sensitivity Evaluation of the Model}
