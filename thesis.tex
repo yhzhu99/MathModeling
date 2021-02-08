@@ -1,9 +1,9 @@
 \documentclass{mcmthesis}
-\mcmsetup{CTeX = true,   % 使用 CTeX 套装时，设置为 true
+\mcmsetup{CTeX = false,   % 使用 CTeX 套装时，设置为 true
         tcn = 2115481, problem = A,
         sheet = true, titleinsheet = true, keywordsinsheet = true,
         titlepage = false, abstract = true}
-\usepackage[UTF8]{ctex}
+% \usepackage[UTF8]{ctex}
 \usepackage{newtxtext}%\usepackage{palatino}
 \usepackage{lipsum}
 \usepackage{amsmath}
@@ -14,7 +14,7 @@
 \title{MCM Thesis}
 \begin{document}
 \begin{abstract}
-  Abstract here
+  Abstract here3
 
 
 \begin{keywords}
@@ -83,7 +83,7 @@ At the same time, we consider that usually different kinds of fungi coexist, and
 
 To predict relative advantages and disadvantages for each species and combinations of species likely to persist, we combine models above. By changing the related parameters of temperature and moisture to simulate different environmental conditions, the dual-population competition model is extended to multiple groups, and the cellular automata algorithm is used to simulate the growth of multiple groups of fungi within a certain range. Then we consider the impact of short-term and long-term climate change, and further describe the long-term trend of fungal population changes with climate. 
 
-TODO
+To describe how the diversity of fungal communities of a system impacts the overall efficiency of a system with respect to the breakdown of ground litter, we analyse biodiversity of community with Simpson index and the distriburion of species in different degrees in the same local environment.
 
 \section{Preparation of the Models}
 
@@ -92,14 +92,15 @@ TODO
 By adequate analysis of the problem, to simplify our model, we make the following well-justified assumptions.
 
 \begin{itemize}
-  \item 
+  \item There are no natural enemies in the environment where the fungus lives. The survival of fungi is only affected by the natural environment and other fungal populations.
+  \item The amount of ground litter and woody fibers is limited. When there are multiple fungal populations, there may be competition for resources.
+  \item In the decomposition process of ground litter and woody fibers, the intermediate stage of decomposition is the same as other stages.
+  \item Environmental conditions change within an acceptable range, and there will be no continuous and destructive extreme weather.
 \end{itemize}
-TODO
 
 \subsection{Notations}
 
 For convenience, we introduce some notations below.
-TODO
 
 \begin{table}[htb]
   \centering
@@ -109,8 +110,17 @@ TODO
       \toprule[1.5pt]
       \makebox[0.3\textwidth][c]{Symbols} & \makebox[0.4\textwidth][c]{Descriptions} \\
       \midrule[1pt]
-      a & b \\
-      x & y \\
+      $M$ & Mass (mg) \\
+      $t$ & Time (day) \\
+      $d$ & Decomposition rate (\% mass loss over 122 days) \\
+      $\rho$ & Spearman rank-order correlation coefficient \\
+      $ex$ & Extension rate (mm/day) \\
+      $mo$ & Moisture index ($\in [-1, 1]$) \\
+      $e(n)$ & Regression error \\
+      $\varepsilon_p$ & Mean square of the error \\
+      $a_p(k)$ & Linear regression coefficient \\
+      $D_c$ & The Simpson index of area $c$ \\
+      $P_i$ & Probability of species $i$ in the sample \\
       \bottomrule[1.5pt]
     \end{tabular}
   \end{center}
@@ -249,7 +259,7 @@ We represent (\ref{alg_f}) as a matrix.
   \end{array}\right)
 \end{equation}
 
-\subsection{Decompostion Rate and Moisture Relationship}
+\subsection{Decomposition Rate and Moisture Relationship}
 
 We normalize the size of the optimal moisture range of fungus as the abscissa, $ \text {mo}=\frac{2 \times \text {width }}{\text {maxwidth }}-1 $. The zero point is the center, -1 means the fungus has the strongest moisture adaptability, and 1 means the fungus has the narrowest suitable moisture range. Plotting a scatter plot shows that the moisture resistance and decomposition rate are negatively correlated. Combining the decomposition rate of various fungi with different moisture adaptability under the same experimental conditions, using one-variable linear regression, the linear equation obtained is 
 
@@ -297,9 +307,172 @@ The corresponding equations and their correlation coefficients are:
 
 The correlation coefficient $ R^{2} $ of the linear regression model is not high. And as the temperature rises, $ R^{2} $ decreases, indicating that in a warmer soil environment, the actual relationship is more complicated than linear association. However, the model has sufficiently reflected that the decomposition rate is negatively correlated with moisture resistance. And there is a positive correlation with its extension rate.
 
+\section{Multi-factor Regression Model}
+
+\subsection{Problem Analysis}
+
+In different climates, the decomposition rate of fungi is different. Even in areas with the same climate, with the changes in soil temperature, moisture and other factors, there are big differences between different parts of the fungus selected. This difference is caused by the mutual influence and interaction of many factors. Relying solely on the control variables to study the influence of certain factors on the decomposition rate is not enough to reflect the actual situation. 
+
+According to the conclusion in question 1, the decomposition rate of ground litter and woody fibers by fungi is mainly related to the growth rate and moisture resistance of fungi. In order to comprehensively consider the influence of the two factors, we need to merge the two relationships in question 1. 
+
+We assume that fungal growth rate and moisture tolerance are two intrinsic traits that are independent of each other. On the basis of the unary linear model in question 1, we build a multiple linear regression model. 
+
+\subsection{Incorporate the Interactions}
+
+Consider the situation at $16 ^ \circ C $. First, control the decomposition rate $ y $ in Model 1 unchanged. We calculate the corresponding extension rate $ x_0 $ and moisture tolerance $ x_1 $ at this time. Take some points $ (y,x_0,x_1) $ as shown in the following table: 
+
+\begin{table}[htb]
+  \centering
+  \caption{Decomposition rate and extension rate and moisture relationship}
+  \begin{center}
+    \begin{tabular}{ccccccc}
+      \toprule[1.5pt]
+      \makebox[0.1\textwidth][c]{Parameter} & \makebox[0.1\textwidth][c]{Point 1} & \makebox[0.1\textwidth][c]{Point 2} & \makebox[0.1\textwidth][c]{Point 3} & \makebox[0.1\textwidth][c]{Point 4} & \makebox[0.1\textwidth][c]{Point 5} & \makebox[0.1\textwidth][c]{Point 6}\\
+      \midrule[1pt]
+      $y$ & 5 & 10 & 20 & 30 & 40 & 50 \\
+      $x_0$ & -1.04 & -0.74 & -0.44 & -0.26 & -0.14 & -0.04 \\
+      $x_1$ & 0.09 & 2.31 & 3.20 & 3.64 & 4.09 & 20.09 \\
+      \bottomrule[1.5pt]
+    \end{tabular}
+  \end{center}
+\end{table}
+
+We assume that the decomposition rate $ Y $, the growth rate $ x_0 $ and the humidity resistance $ x_1 $ satisfy the following linear relationship: 
+
+\begin{equation}
+  Y(x)=h_\theta(x)=\theta^{\top} x=\theta_{0} x_{0}+\theta_{1} x_{1}
+\end{equation}
+
+Where
+
+\begin{equation}
+  \boldsymbol{Y}=\left(\begin{array}{c}
+  y_{1} \\
+  y_{2} \\
+  \vdots \\
+  y_{n}
+  \end{array}\right), \boldsymbol{X}=\left(\begin{array}{cccc}
+  1 & x_{11} & \cdots & x_{1 p} \\
+  1 & x_{21} & \cdots & a_{2 p} \\
+  \vdots & \vdots & \ddots & \vdots \\
+  1 & x_{n 1} & \cdots & a_{n p}
+  \end{array}\right), \boldsymbol{\theta}=\left(\begin{array}{c}
+  \theta_{0} \\
+  \theta_{1} \\
+  \vdots \\
+  \theta_{p}
+  \end{array}\right), \boldsymbol{\varepsilon}=\left(\begin{array}{c}
+  \varepsilon_{1} \\
+  \varepsilon_{2} \\
+  \vdots \\
+  \varepsilon_{n}
+  \end{array}\right)
+\end{equation}
+
+Introduce a cost function to measure the regression effect:
+
+\begin{equation}
+  J\left(\theta_{0}, \theta_{1}\right)=\frac{1}{2 m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right)^{2}
+\end{equation}
+
+To apply the gradient descent method to our previous linear regression problem, the key is to find the derivative of the cost function, namely: 
+
+\begin{equation}
+  \frac{\partial}{\partial \theta_{j}} J\left(\theta_{0}, \theta_{1}\right)=\frac{\partial}{\partial \theta_{j}} \frac{1}{2 m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right)
+\end{equation}
+
+When $ j=0 $:
+
+\begin{equation}
+  \frac{\partial}{\partial \theta_{0}} J\left(\theta_{0}, \theta_{1}\right)=\frac{1}{m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right)
+\end{equation}
+
+When $ j=1 $:
+
+\begin{equation}
+  \quad \frac{\partial}{\partial \theta_{1}} J\left(\theta_{0}, \theta_{1}\right)=\frac{1}{m} \sum_{i=1}^{m}\left(\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right) \cdot x^{(i)}\right)
+\end{equation}
+
+Then iterate the following formulas
+
+\begin{equation}
+  \begin{split}
+    \begin{array}{l}
+      \theta_{0}:=\theta_{0}-a \frac{1}{m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right) \\
+      \theta_{1}:=\theta_{1}-a \frac{1}{m} \sum_{i=1}^{m}\left(\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right) \cdot x^{(i)}\right)
+    \end{array}
+  \end{split}
+\end{equation}
+
+Substitute each group of observations in the above table to estimate the regression coefficient by least squares. Regression solving the above algorithm, the regression equation is $ Y = 35.129x_0 +0.667x_1 + 37.692 $. That is $ d = 35.129ex +0.667mo + 37.692 $ 
+
+The regression plane in the three-dimensional space is shown in the figure below.
+
+\begin{figure}[H]
+  \small
+  \centering
+  \includegraphics[width=10cm]{3dim_de_extension_moi}
+  \caption{Relationship between fungi decomposition rate and growth rate and moisture tolerance.}
+  \label{3dim_de_extension_moi}
+\end{figure}
+
+The result is $ \theta_0\ne0,\theta_1\ne 0 $, indicating that the regression model is effective.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \bibliography{ref}{}
 \bibliographystyle{plain}
-
 
 \begin{appendices}
 
@@ -319,7 +492,6 @@ Your friends
 
 \end{letter}
 Here are simulation programmes we used in our model as follow.\\
-是这样的
 
 
 \section{Programs}
