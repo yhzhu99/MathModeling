@@ -679,7 +679,13 @@ In order to make the results more intuitive, the cellular automata method is use
 
 The intrinsic growth rates of species differs greatly, which causes different distribution of species as shown below. To simplify the shape of figure, we chose 3 species as initial live species. The series below shows the distribution of species. The green cells stand for sources or nutrition, the colored turtles stand for fungal individuals.
 
-TODO
+\begin{figure}[H]
+  \small
+  \centering
+  \includegraphics[width=12cm]{series_3species}
+  \caption{The series of three species. (a)-(f) corresponds to distribution in the 0, 50, 100, 150, 300, 500 iterations respectively.}
+  \label{series_3species}
+\end{figure}
 
 To get more generate interaction rule between multi species, we enlarged initial species to 10, and recorded population amounts continuously. In the figure below, x-axis stands for ticks of iteration, y-axis stands for percent of living species, ans different color stands for different species.
 
@@ -711,7 +717,13 @@ As for the long-term trend, we will consider the suitable moisture range of fung
     k_{2}=1
     \end{array}\right. $ are drawn respectively, as shown in the figure below. In the figure, the growth rate of $ x_1 $ is slightly lower than that of $ x_2 $, but the competitiveness is slightly better than that of $ x_2 $. the moisture tolerance of $ x_1 $and $ x_2 $ in the left figure is the same, and that of $ x_2 $in the right figure is slightly lower than $ x_1 $.
 
-TODO
+\begin{figure}[H]
+  \small
+  \centering
+  \includegraphics[width=15cm]{long_term_trends_2_population}
+  \caption{Long-term trends analysis of two population.}
+  \label{long_term_trends_2_population}
+\end{figure}
 
 \subsection{Examination of the Sensitivity to Rapid Fluctuation}
 
@@ -798,31 +810,61 @@ The community structure varies in different climate scenarios, and its evolution
 
 Case 1: In arid zones, there are large temperature fluctuations, low precipitation. This requires higher tolerance for fungi, but causes lower decomposition rate relatively.
 
-TODO
+\begin{figure}[H]
+  \small
+  \centering
+  \includegraphics[width=15cm]{prediction_community_3species}
+  \caption{The prediction of the community of 3 species, 10 species and 10 species without climate change in arid zones.}
+  \label{prediction_community_3species}
+\end{figure}
 
 It can be seen from the figure that the stability of the community takes a long time, and populations with comparable viability are more likely to resist extreme environmental conditions. Intolerant colonies cannot join the competition or are eliminated at the beginning. After the community structure is relatively stable, there is a dynamic balance among several populations, and each population shows periodic fluctuations, but because fungi has good tolerance, the overall decomposition situation is relatively stable.
 
 Case 2: In semi-arid area, there is periodic precipitation. Compared with the conditions in Case 1, the requirements for the moisture resistance of fungi are reduced.
 
-TODO
+\begin{figure}[H]
+  \small
+  \centering
+  \includegraphics[width=15cm]{prediction_community_3species2}
+  \caption{The prediction of the community of 3 species, 10 species and 10 species without climate change in semi-arid zones.}
+  \label{prediction_community_3species2}
+\end{figure}
 
 Compared to arid, the environment becomes more mild for fungi, especially for competitive ones in the extension stage. As shown in the middle figure, after around 1000 rounds, more species become extinct. However, without climate change, there may be more species existing in the same patch. This reveals species with both better tolerance and dominance can survive better.
 
 Case 3: In temperate region, resources are relatively more abundant, which can support more individuals.
 
-TODO
+\begin{figure}[H]
+  \small
+  \centering
+  \includegraphics[width=15cm]{prediction_community_3species3}
+  \caption{The prediction of the community of 3 species, 10 species and 10 species without climate change in temperate zones.}
+  \label{prediction_community_3species3}
+\end{figure}
 
 As the species abundance increases, the magnitude of the number changes gradually decreases. However, at each moment, the gap between the dominant species and others is more evident. Under ideal conditions, there are more competitors existing at the same time, which reveals climate changes have played a role in natural selection.
 
 Case 4: In arboreal, The content of humus increase, the soil has higher temperature and moisture, which can accommodate more kinds of fungi.
 
-TODO
+\begin{figure}[H]
+  \small
+  \centering
+  \includegraphics[width=15cm]{prediction_community_3species4}
+  \caption{The prediction of the community of 3 species, 10 species and 10 species without climate change in arboreal zones}
+  \label{prediction_community_3species4}
+\end{figure}
 
 It can be seen from the comparison that under the same climate conditions, the change trend of the three populations and the multi populations is roughly the same. There is no absolute dominant species in the community. When there are fluctuations in the environment, there is a shift between several populations with higher niche. Species with higher extension rate in this situation are in an advanced position in the community.
 
 Case 5: In tropical rain forests, the climate is more stable, suitable for more species of fungi. And the chemical metabolism is accelerated, ground litter and woody fibers is rich, and there is a continuous supply of nutrient in the soil.
 
-TODO
+\begin{figure}[H]
+  \small
+  \centering
+  \includegraphics[width=15cm]{prediction_community_3species5}
+  \caption{The prediction of the community of 3 species, 10 species and 10 species without climate change in tropical rain forests.}
+  \label{prediction_community_3species5}
+\end{figure}
 
 In this case, the community composition is more complex and the dominance is reduced. After slight climate change, the ecological structure remains stable. When the C element is used as the main measurement standard, the dominant species in the figure above have a greater impact. When other elements or components are used as the measurement standard, the results may be inverted. On the whole, the community is more abundant, the dominant population is different under different standards, and the overall decomposition efficiency is high.
 
@@ -873,9 +915,15 @@ We use the efficiency of carbon as the efficiency of fungi decomposing organic m
   \label{species_richness_carbon}
 \end{figure}
 
-In addition, there are great differences in different parts of the same area. For example, land use change directly influences soil microbial communities by altering vegetation cover\cite{li2019spatial}.Figures below show fungi distribution in woodland, shrubland and open area. It is shown that even in the same park, there are still evident differences between patchs. The x-axis and y-axis stand for easting and northing (meter).
+In addition, there are great differences in different parts of the same area. For example, land use change directly influences soil microbial communities by altering vegetation cover\cite{li2019spatial}. Figures below show fungi distribution in woodland, shrubland and open area. It is shown that even in the same park, there are still evident differences between areas. The x-axis and y-axis stand for easting and northing (meter).
 
-TODO
+\begin{figure}[H]
+  \small
+  \centering
+  \includegraphics[width=15cm]{biodiversity_woodland}
+  \caption{The biodiversity of woodland, shrubland and open area in a park\cite{li2019spatial}.}
+  \label{biodiversity_woodland}
+\end{figure}
 
 Thus, tree distribution-induced shifts in local environments controlled the spatial variations in soil fungi community structure within one land use type, highlighting that the role of spatial heterogeneity in microbial communities has important implications for land management and carbon cycle.
 
@@ -887,7 +935,13 @@ In the ecosystem, different organisms absorb and metabolize different substances
 
 Through the above analysis, the symbiotic relationship of various fungi under different environmental factors is obtained, and the combination of fungi that may appear for a long time in different climates is given. Influenced by various external factors, climatic conditions may change in a certain range. Next, taking the sensitivity analysis of temperature and moisture variation range under different climatic conditions. Using the temperate climate as an example, when the average temperature and moisture of that year fluctuate within the range of 5\%, the population density change obtained is as shown in the figure below, and the change range is within 5\%, so it can be considered that the model is relatively stable.
 
-TODO
+\begin{figure}[H]
+  \small
+  \centering
+  \includegraphics[width=15cm]{sensitivity_analysis}
+  \caption{Sensitivity analysis of average temperature and moisture tolerance.}
+  \label{sensitivity_analysis}
+\end{figure}
 
 \section{Conclusion}
 
@@ -922,7 +976,7 @@ Finally, robust region algorithm: Huber regression algorithm and Theil-Sen regre
 
 The factors affecting fungal growth and inter ethnic competition are comprehensively evaluated, and the possible long-term fungal assemblages under several representative climatic conditions are predicted. After extracting the characteristics of different climatic conditions, we use cellular automata, introduce 10 species and deduce the evolution process of the population. When the population number is stable, it is the species combination that may exist for a long time under this climatic condition.
 
-In arid zones, it takes a long time for the community to be stable, and the populations with the same survival ability are more likely to resist the extreme conditions of the environment, and the intolerant colonies can not join the competition or be eliminated at the beginning. After the community structure is relatively stable, there is a dynamic balance among several populations, and each population presents a periodic fluctuation. However, due to the good tolerance of fengi, the overall decomposition is relatively stable.
+In arid zones, it takes a long time for the community to be stable, and the populations with the same survival ability are more likely to resist the extreme conditions of the environment, and the intolerant colonies can not join the competition or be eliminated at the beginning. After the community structure is relatively stable, there is a dynamic balance among several populations, and each population presents a periodic fluctuation. However, due to the good tolerance of fungi, the overall decomposition is relatively stable.
 
 In semi-arid area, The environment becomes more mild for fungi, especially for competitive ones in the extension stage. Species with both better tolerance and dominance can survive better.
 
@@ -940,7 +994,7 @@ Simpson index is used to evaluate the biodiversity of regional fungi from multip
 
 \begin{itemize}
   \item Among growth and ecological performance traits that have impact on decomposition rate, we use Spearman correlation to analyze main traits, which can greatly represent most situations.
-  \item When analysing the dynamic interactions of the population, we take different cases into consideration, and introduce relative equations for precise calculation.
+  \item When analyzing the dynamic interactions of the population, we take different cases into consideration, and introduce relative equations for precise calculation.
   \item Considering the influences of environmental factors, computer simulation is utilized for predicting the future community evolution.
 \end{itemize}
 
@@ -948,16 +1002,9 @@ Simpson index is used to evaluate the biodiversity of regional fungi from multip
 
 \begin{itemize}
   \item When simulating the interaction of fungi, the simulation is performed only on a two-dimensional plane, without considering the changes of fungi in different depths of the actual soil. There are lots of work to do on 3-D simulation model.
-  \item The relationships between temprature and decompotition rate only select three typical decrete values, which cannot describe all posible temperature conditions.
-  \item To simplify the model, Fungal combination model take average temprature and moisture as parameters. To some extent, some continuous condition cannot be redlected, which can cause some error. In futher work, we will collect continuous data to fit the actural situations better.
+  \item The relationships between temperature and decomposition rate only select three typical discrete values, which cannot describe all possible temperature conditions.
+  \item To simplify the model, Fungal combination model take average temperature and moisture as parameters. To some extent, some continuous condition cannot be reflected, which can cause some error. In further work, we will collect continuous data to fit the actual situations better.
 \end{itemize}
-
-
-
-
-
-
-
 
 \bibliography{ref}{}
 \bibliographystyle{plain}
@@ -989,24 +1036,24 @@ Carbon cycle is the most important one in the chemical cycle of the earth. Carbo
   \label{fungal}
 \end{figure}
 
-We can consider that the extension rate and moisture tolerance of fungi are the main factors affecting the decomposition of ground litter and woody fiber. Through the analysis of a large number of data, using the method of linear regression, the decomposition rate of fungi is positively correlated with the extention rate of fungi, and negatively correlated with the moisture tolerance. In other words, the faster the fungi grow, the faster they can decompose, while the fungi with better moisture tolerance have a smaller decomposition rate.
+We can consider that the extension rate and moisture tolerance of fungi are the main factors affecting the decomposition of ground litter and woody fiber. Through the analysis of a large number of data, using the method of linear regression, the decomposition rate of fungi is positively correlated with the extension rate of fungi, and negatively correlated with the moisture tolerance. In other words, the faster the fungi grow, the faster they can decompose, while the fungi with better moisture tolerance have a smaller decomposition rate.
 
 \begin{figure}[H]
   \small
   \centering
   \includegraphics[width=12cm]{regression_compound}
+  \caption{The relationship between the moisture tolerance of various fungi and the resulting wood decomposition rate.}
   \label{regression_compound}
 \end{figure}
 
 In the natural environment, a certain kind of fungus usually does not exist alone, but often coexists with many kinds of fungi. We can use the population competition model to describe the growth of many kinds of fungi coexisting. The growth rate and competitiveness of each fungal population are affected by temperature and moisture. The proportion of fungal population after a period of time is obtained by cellular automata algorithm. When the time is long enough, the population of each fungi maintains a stable value, or changes with the climate change. If the climate changes with the annual cycle, the population of each fungal population also changes with the annual cycle.
 
-TODO
-
 \begin{figure}[H]
   \small
   \centering
-  \includegraphics[width=12cm]{regression_compound}
-  \label{regression_compound}
+  \includegraphics[width=12cm]{density_proportion}
+  \caption{The change of population density proportion.}
+  \label{density_proportion}
 \end{figure}
 
 In several representative climates, arid, semi-arid, temperate, arboreal, and tropical rain forests. In arid zones, there are large temperature fluctuations, low precipitation. This requires higher tolerance for fungi, but causes lower decomposition rate relatively. 
@@ -1021,10 +1068,13 @@ In tropical rain forests, the climate is more stable and suitable for more kinds
 
 As we all know, fungi are usually multi-population coexistence. There is not only competition but also cooperation between different fungi. Different fungi absorb and metabolize different chemicals. They absorb their own nutrients in the same area, and it is also possible that the metabolites of one fungus are the substances that another fungus needs to absorb. Different fungi have different optimal growth conditions. When the environment changes, the fungal community of a single population may be unable to adapt to the new environment, but the population density gradually decreases, which eventually leads to the imbalance of the ecosystem. When the environment changes, the growth ability and competitiveness of species within the community will change, and the dominant species may replace, But on the whole, the total decomposition rate of all fungi did not change dramatically. Through the evaluation of biodiversity and the analysis of a large number of data, conclude that with the increase of species richness of fungal community, the total decomposition rate showed an upward trend, and the variance of total decomposition rate under different growth conditions decreased, indicating that the diversity of fungal species can help fungal community to have a higher and more stable decomposition rate when the environment changes. In nature, fungi can decompose the corpses or remains of animals and plants, and promote the material circulation in nature. The diversity of fungi can make this process stable under environmental changes, so as to maintain the balance of the ecosystem.
 
-TODO
-
-
-
+\begin{figure}[H]
+  \small
+  \centering
+  \includegraphics[width=12cm]{species_richness_carbon}
+  \caption{Effects of species richness on carbon use efficiency.}
+  \label{species_richness_carbon}
+\end{figure}
 
 % \section{Programs}
 % \textbf{\textcolor[rgb]{0.98,0.00,0.00}{Input Python source:}}
