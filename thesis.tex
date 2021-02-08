@@ -6,8 +6,10 @@
 \usepackage[UTF8]{ctex}
 \usepackage{newtxtext}%\usepackage{palatino}
 \usepackage{lipsum}
+\usepackage{amsmath}
 \usepackage{cite}
 \usepackage{url}
+\usepackage{float}
 \usepackage[nottoc,notlot,notlof]{tocbibind}
 \title{MCM Thesis}
 \begin{document}
@@ -38,7 +40,7 @@ keyword1; keyword2
 
 The carbon cycle process is a very vital component of the planet. Part of the carbon cycle process is the decomposition of compounds, allowing carbon to be renewed and used in other forms. A key part of the decomposition of compounds comes from the decomposition of plant material and woody fibers. Some of the key agents in decomposing woody fibers are fungi. Studies have shown that among the many fungi traits, the growth rate of the fungus and the fungus' tolerance to moisture is the growth rate of the fungus and the fungus' tolerance to moisture. There are interesting correlations between fungi traits. And when different types of fungi coexist, they will affect each other. 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \small
 \centering
 \includegraphics[width=8cm]{carbon_cycle}
@@ -132,11 +134,11 @@ For a given piece of land, the decomposition rate of fungi varies with the vario
 
 We sort the calculation results corresponding to each trait according to the Spearman coefficient. 
 
-\begin{figure}[h]
+\begin{figure}[H]
   \small
   \centering
   \includegraphics[width=12cm]{growth_eco_traits}
-  \caption{The spearman correlation of different growth and ecological preformance traits}
+  \caption{The spearman correlation of different growth and ecological preformance traits.}
   \label{growth_eco_traits}
 \end{figure}
 
@@ -263,18 +265,37 @@ That is
 
 It indicates that the greater the $mo $, the worse the adaptability of the fungus and the greater the decomposition rate. It also shows that the ability of fungi to adapt to moisture is negatively related to the decomposition rate. 
 
+\begin{figure}[H]
+  \small
+  \centering
+  \includegraphics[width=8cm]{decomposition_moisture}
+  \caption{The relationship between the moisture tolerance of various fungi and the resulting wood decomposition rate.}
+  \label{decomposition_moisture}
+\end{figure}
 
-\section{Sensitivity Evaluation of the Model}
-\section{Model Strengths and Weaknesses}
-\subsection{Strengths}
-\begin{itemize}
-\item \textbf{Applies widely}\\
-This system can be used for many types of airplanes, and it also
-\end{itemize}
-\subsection{Weaknesses}
+\subsection{Decomposition Rate and Extension Rate Relationship}
 
-\section{Future Considerations}
-\section{Conclusion}
+Then we control the moisture to remain unchanged. Taking into account the influence of temperature on the decomposition rate,  We perform linear fitting on the depositoin rate and the hypohal extension rate under $ T=10, 16, 22^{\circ}C $ respectively. We get the following results. 
+
+\begin{figure}[H]
+  \small
+  \centering
+  \includegraphics[width=12cm]{decomposition-extension_tot}
+  \caption{The relationship between the hyphal extension rate (mm/day) of various fungi and the resulting wood decomposition rate (\% mass loss over 122 days) at various temperatures. \cite{lustenhouwer2020trait} According to the data given in the article's appendix, we re-mapped.}
+  \label{decomposition-extension_tot}
+\end{figure}
+
+The corresponding equations and their correlation coefficients are: 
+
+\begin{equation}
+  \begin{split}
+    d&=2.73ex+1.86,R^2=0.5009 (T=10^{\circ}C) \\
+    d&=2.25ex+4.80,R^2=0.4147 (T=16^{\circ}C) \\
+    d&=2.51ex+11.48,R^2=0.2511 (T=22^{\circ}C)
+  \end{split}
+\end{equation}
+
+The correlation coefficient $ R^{2} $ of the linear regression model is not high. And as the temperature rises, $ R^{2} $ decreases, indicating that in a warmer soil environment, the actual relationship is more complicated than linear association. However, the model has sufficiently reflected that the decomposition rate is negatively correlated with moisture resistance. And there is a positive correlation with its extension rate.
 
 \bibliography{ref}{}
 \bibliographystyle{plain}
