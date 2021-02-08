@@ -1,5 +1,5 @@
 \documentclass{mcmthesis}
-\mcmsetup{CTeX = false,   % 使用 CTeX 套装时，设置为 true
+\mcmsetup{CTeX = false,   % 使用 CTeX 套装时, 设置为 true
         tcn = 2115481, problem = A,
         sheet = true, titleinsheet = true, keywordsinsheet = true,
         titlepage = false, abstract = true}
@@ -10,15 +10,25 @@
 \usepackage{cite}
 \usepackage{url}
 \usepackage{float}
+\usepackage{graphicx}
+\usepackage{subfigure}
 \usepackage[nottoc,notlot,notlof]{tocbibind}
 \title{MCM Thesis}
 \begin{document}
 \begin{abstract}
-  Abstract here3
+  
+  Fungi play a prominent role in terrestrial ecosystems, and they influence almost every aspect of terrestrial ecosystem functioning. They are the dominant decomposers of woody fibers, with direct impact on global carbon and nutrient dynamics.
 
+  There are several factors affecting fungal decomposition. To simplify the model without loss of generality, we sort traits by Spearson correlation. The growth rate of fungus and fungus' moisture tolerance have highest correlations, thus chosen to be main factors. In Single-factor Regression Model, we evaluate how they affect the decomposition process in the presense of multiple species. With decomposition data under 10, 16, and 22 $^\circ C$, we compute linear relationships between hyphal extension rate, tolerance index and decomposition rate. Then, we build Multi-factors Regression Model using multiple linear regression algorithm, for the sake of describing how different factor combinations have influence on the decomposition rate. 
+  
+  Considering the interacions between multiple species, we introduce Fungal Competition Model. Starting from simpliest situation, we build a model on two species with different strength. Through changing relative intrensic rates of two, we get replacement, partial replacement and deadlock relationships. All three cases have been verified in actual experimental data. To generlize to actual situation, next we introduce multispecies competition model. Compared to former algorithm, nonlinear model works on this problem, and result shows there is periodic oscillation solution to this equation but no equilibrium point. Regarding the changing atmospheric trends, we also take soil and climate factors into consideration on the basis of former model. To visually observe the evolution of the community, cellular automata has been utilized to simulate this process.
+  
+  After that, we use Fungal Combination Model to predict advantages and disadvantages for species or combinations in several senarios. Based on the cellular automata before, we get prediction curve of 3 species, 10 species and one without climate change as reference. At last, we use Simpson Index to measure the biodiversity, and predict how it has impact on overall efficency in the Diversity of Fungal Communities Model.
+  
+  What's more, in the sensitivity analysis, we focus on temprature and moisture's variation range, in order to analyze their impacts on community density. Finally, we write an article for an introductory biology textbook, to discuss how people understand fungi's ecological role these years. 
 
 \begin{keywords}
-keyword1; keyword2
+  Fungus Community; Decomposition Process; Carbon Cycle
 \end{keywords}
 \end{abstract}
 \maketitle
@@ -56,7 +66,7 @@ This article studies these effects, based on our proposed model, we make predict
 
 \subsection{Restatement of the Problem}
 
-Based on the relevant conclusions in the research article given in the question, our paper should continue to explore and adress the following aspects. 
+Based on the relevant conclusions in the research article given in the question, our paper should continue to explore and address the following aspects. 
 
 \begin{itemize}
   \item \textbf{Problem 1:}
@@ -79,11 +89,11 @@ We consider using a linear regression model to analyze the relationship between 
 
 Since the growth rate of fungi and the tolerance to moisture need to be considered comprehensively, we integrate this in our model. The relationship between fungal decomposition rate, growth rate and moisture tolerance is obtained by using multiple linear regression algorithm. 
 
-At the same time, we consider that usually different kinds of fungi coexist, and there is a competitive relationship between them. In the end, there may only be one kind of different kinds of fungi that will survive to the end. we describe the interactions between the different types of fungi and estabablishe a competition model, using cellular automata model to simulate the results of competition.
+At the same time, we consider that usually different kinds of fungi coexist, and there is a competitive relationship between them. In the end, there may only be one kind of different kinds of fungi that will survive to the end. we describe the interactions between the different types of fungi and establish a competition model, using cellular automata model to simulate the results of competition.
 
 To predict relative advantages and disadvantages for each species and combinations of species likely to persist, we combine models above. By changing the related parameters of temperature and moisture to simulate different environmental conditions, the dual-population competition model is extended to multiple groups, and the cellular automata algorithm is used to simulate the growth of multiple groups of fungi within a certain range. Then we consider the impact of short-term and long-term climate change, and further describe the long-term trend of fungal population changes with climate. 
 
-To describe how the diversity of fungal communities of a system impacts the overall efficiency of a system with respect to the breakdown of ground litter, we analyse biodiversity of community with Simpson index and the distriburion of species in different degrees in the same local environment.
+To describe how the diversity of fungal communities of a system impacts the overall efficiency of a system with respect to the breakdown of ground litter, we analyse biodiversity of community with Simpson index and the distribution of species in different degrees in the same local environment.
 
 \section{Preparation of the Models}
 
@@ -148,7 +158,7 @@ We sort the calculation results corresponding to each trait according to the Spe
   \small
   \centering
   \includegraphics[width=12cm]{growth_eco_traits}
-  \caption{The spearman correlation of different growth and ecological preformance traits.}
+  \caption{The spearman correlation of different growth and ecological performance traits.}
   \label{growth_eco_traits}
 \end{figure}
 
@@ -418,45 +428,341 @@ The regression plane in the three-dimensional space is shown in the figure below
 
 The result is $ \theta_0\ne0,\theta_1\ne 0 $, indicating that the regression model is effective.
 
+\section{Fungal Competition Model}
 
+\subsection{Interactions Between the Different Types of Fungi}
 
+There are interactions among the various fungal populations that exist on the same ground litter and woody fibers. According to the relationship between fungi populations, fungi with different viability may have different relationships, and the establishment of these relationships often takes a certain amount of time. Therefore, in different time periods, the populations may show different interactions.
 
+In order to simplify the problem, we simply discuss the interaction between populations. We temporarily ignore the impact of environmental changes on population relationships, and discuss according to different population abundance and initial spatial distribution. 
 
+\begin{figure}[H]
+  \small
+  \centering
+  \includegraphics[width=12cm]{order_analysis_model}
+  \caption{Order of analysis of our model below. The figure is drawn with \cite{hiscox2018fungus} as a reference.}
+  \label{order_analysis_model}
+\end{figure}
 
+\subsubsection{Dual Population}
 
+First, consider two populations $ x_1 $ and $ x_2 $, assuming that their number changes obey the logistic law when they live alone. We use a population competition model here.
 
+\begin{equation}
+  \left\{ \begin{array}{l} \frac{\mathrm{d} x_1}{\mathrm{d} t}=r_{1} x_1\left(1-\frac{x_1}{n_{1}}-s_{1} \frac{x_2}{n_{2}}\right)\\ \frac{\mathrm{d} x_2}{\mathrm{d} t}=r_{2} x_2\left(1-\frac{x_2}{n_{2}}-s_{2} \frac{x_1}{n_{1}}\right) \end{array} \right.
+  \label{alg_31}
+\end{equation}
 
+Among them, $ x_1(t), x_2(t) $ are the numbers of the two groups A and B respectively. $ r_1, r_2 $ are their inherent growth rates, and $ n_1, n_2 $ are their maximum capacities. In terms of resources, the consumption of the unit quantity of B (relative to $n_2$) is the consumption of unit quantity A (relative to $n_1$) of $s_1$ times, and the same is true for $s_2$. 
 
+Below we will select different model parameters to solve the model. Assume that the initial numbers of the two groups are equal, both are 120 units. 
 
+Case 1: Set the model parameters as: 
 
+\begin{equation}
+  \left\{\begin{array}{l}
+    r_{1}=0.1, \frac{1}{N_{1}}=0.002, a_{1}=0.0001 \\
+    r_{2}=0.3, \frac{1}{N_{2}}=0.003, a_{2}=0.0002 \\
+    x_{1}(0)=120, x_{2}(0)=120
+    \end{array}\right.
+  \label{alg_32}
+\end{equation}
 
+The calculation result is shown in the left diagram below.
 
+\begin{figure}[H]
+  \centering
+  \subfigure
+  {
+    \begin{minipage}[b]{.4\linewidth}
+      \centering
+      \includegraphics[scale=0.3]{curve_competing_species}
+      \caption{The prediction curve of competing species}
+    \end{minipage}
+  }\quad \quad \quad \quad \quad \quad
+  \subfigure
+  {
+    \begin{minipage}[b]{.4\linewidth}
+      \centering
+      \includegraphics[scale=0.5]{amount_trametes}
+      \caption{The amounts of Trametes versicolor and P. placenta}
+    \end{minipage}
+  }
+\end{figure}
 
+Both populations showed an upward trend after entering the group. With the consumption of resources, $ x_1 $ showed an advantage in the competition and continued to rise, while the amount of $ x_2 $ fell after reaching the peak, and both reached Stable state, but there are niche differences. According to the actual data of the researchers, there is a similar relationship between Trametes versicolor and P. placenta. The horizontal axis represents time (per day), and the vertical axis represents ratio in the community. The dark part at the bottom of the image is the proportion of P. placenta, and the light part at the top is of Trametes versicolor. The sum of the two is always 1 (the same in other cases in the following). As can be seen from the picture on the right, the ratio of the two was equal when they first entered the community, but after a period of fluctuation, the community reached a relatively balanced state. Compared with the beginning, Trametes versicolor was partially replaced.
 
+Case 2: Set the model parameters as: 
 
+\begin{equation}
+  \left\{\begin{array}{l}
+    r_{1}=0.2, \frac{1}{N_{1}}=0.002, a_{1}=0.0005 \\
+    r_{2}=0.3, \frac{1}{N_{2}}=0.003, a_{2}=0.0002 \\
+    x_{1}(0)=120, x_{2}(0)=120
+    \end{array}\right.
+  \label{alg_33}
+\end{equation}
 
+The viability of the two populations differs extremely. $ x_1 $ only rises for just a moment after entering the group, and then decreases until it is completely replaced. In other words, $ x_2 $ is eliminated by $ x_1 $. According to the actual data of the researchers\cite{hiscox2018fungus}, there is a similar relationship between Trametes versicolor and G. trabeum. Trametes versicolor is the dominant species in the competition.
 
+\begin{figure}[H]
+  \centering
+  \subfigure
+  {
+    \begin{minipage}[b]{.4\linewidth}
+      \centering
+      \includegraphics[scale=0.3]{curve_competing_species2}
+      \caption{The prediction curve of competing species}
+    \end{minipage}
+  }\quad \quad \quad \quad \quad \quad
+  \subfigure
+  {
+    \begin{minipage}[b]{.4\linewidth}
+      \centering
+      \includegraphics[scale=0.5]{amount_trametes2}
+      \caption{The amounts of Trametes versicolor and G. trabeum}
+    \end{minipage}
+  }
+\end{figure}
 
+Case 3: Set the model parameters as: 
 
+\begin{equation}
+  \left\{\begin{array}{l}
+    r_{1}=0.2, \frac{1}{N_{1}}=0.003, a_{1}=0.0002 \\
+    r_{2}=0.3, \frac{1}{N_{2}}=0.003, a_{2}=0.0002 \\
+    x_{1}(0)=120, x_{2}(0)=120
+    \end{array}\right.
+  \label{alg_34}
+\end{equation}
 
+The two populations are evenly matched and have equal strength in competition. Trametes versicolor and B. adusta have a similar relationship, the community is always relatively balanced, and two species occupy resources equally. We also say that a deadlock relationship is formed between populations.
 
+\begin{figure}[H]
+  \centering
+  \subfigure
+  {
+    \begin{minipage}[b]{.4\linewidth}
+      \centering
+      \includegraphics[scale=0.3]{curve_competing_species3}
+      \caption{The prediction curve of competing species}
+    \end{minipage}
+  }\quad \quad \quad \quad \quad \quad
+  \subfigure
+  {
+    \begin{minipage}[b]{.4\linewidth}
+      \centering
+      \includegraphics[scale=0.5]{amount_trametes3}
+      \caption{The amounts of Trametes versicolor and B. adusta}
+    \end{minipage}
+  }
+\end{figure}
 
+More generally, we calculate the equilibrium point for equation (\ref{alg_31}), the determining equations for (\ref{alg_31}) are:
 
+\begin{equation}
+  \left\{\begin{array}{l}
+    r_{1} x_{1}\left(1-\frac{x_{1}}{N_{1}}\right)-a_{1} x_{1} x_{2}=0 \\
+    r_{2} x_{2}\left(1-\frac{x_{2}}{N_{2}}\right)-a_{2} x_{1} x_{2}=0
+    \end{array}\right.
+\end{equation}
 
+It has 4 solutions:
 
+\begin{equation}
+  \left\{\begin{array}{l}
+    x_{1}=0 \\
+    x_{2}=0
+    \end{array}, \quad\left\{\begin{array}{l}
+    x_{1}=0 \\
+    x_{2}=N_{2}
+    \end{array}, \quad\left\{\begin{array}{l}
+    x_{1}=N_{1} \\
+    x_{2}=0
+    \end{array}, \quad\left\{\begin{array}{l}
+    x_{1}=\frac{N_{1} r_{2}\left(a_{1} N_{2}-r_{1}\right)}{a_{1} a_{2} N_{1} N_{2}-r_{1} r_{2}} \\
+    x_{2}=\frac{N_{2} r_{1}\left(a_{2} N_{1}-r_{2}\right)}{a_{1} a_{2} N_{1} N_{2}-r_{1} r_{2}}
+    \end{array}\right.\right.\right.\right.
+\end{equation}
 
+The first three equilibrium points are ordinary equilibrium points, and the last one is non-trivial. It can be found that when the parameter is set as (\ref{alg_32}), the equation (\ref{alg_31}) finally converges to the fourth equilibrium point, which shows that the fourth equilibrium point has strong stability.
 
+In order to analyze the global property of the equation, we draw a directional field diagram of (\ref{alg_31}) and (\ref{alg_32}), in which the green point is the equilibrium point, and the color shades represent the changing speed at this point.
 
+\begin{figure}[H]
+  \small
+  \centering
+  \includegraphics[width=12cm]{biological_competion_model}
+  \caption{The directional field diagram of biological competition model.}
+  \label{biological_competion_model}
+\end{figure}
 
+There are four equilibrium points in the diagram:
 
+The first equilibrium point,  $ (0,0) $ at the bottom left, i.e.the case where the numbers of both species are 0, is an unstable equilibrium point. All the arrows are pointing away from the equilibrium point, which means that the tiny disturbance near the equilibrium point will eventually go far away from the equilibrium point. In other words, as long as there are a small number of species living here, they will eventually multiply and reach another equilibrium point;
 
+The second equilibrium point,  $(0,N_2) $ at the top left, i.e. with only species  $ x_2 $ existing, belongs to the unstable equilibrium point (saddle point), and only the arrow on the vertical line past this point points to it. But all the other arrows point away from that, which means the equilibrium point is more stable than $ (0,0) $, but it is also unstable. As long as there is a small amount of species $ x_1 $, it wiill be far away from the current equilibrium point due to competition;
 
+The third equilibrium point, $ (N_1,0) $ at the bottom right, is the case of only species $ x_1 $ exist, belongs to the unstable equilibrium point (saddle point). Only the arrow on the horizontal line past this point points to it. But all the other arrows move away from the equilibrium point, which means that the stability of the equilibrium point is stronger than $ (0,0) $, but it is also unstable. As long as there are a small amount of species $ x_2 $, it will be far away from the current point due to competition. 
 
+The last equilibrium point, is $ \left(\frac{N_{1} r_{2}\left(a_{1} N_{2}-r_{1}\right)}{a_{1} a_{2} N_{1} N_{2}-r 1^{r} 2}, \frac{N_{2} r_{1}\left(a_{2} N_{1}-r_{2}\right)}{a_{1} a_{2} N_{1} N_{2}-r_{1} r_{2}}\right)$at the upper right.  Both species exist and reach a balanced state, which means a stable equilibrium point. All the arrows near the point point to it, which means that even if it deviates from the balance pointequilibrium point, it will eventually go back to the balance point.
 
+For more clearly reflection of the flow situation at the equilibrium point, we draw the diagram of family of phase pathway (code in appendix).
 
+\begin{figure}[H]
+  \small
+  \centering
+  \includegraphics[width=12cm]{biological_competion_model2}
+  \caption{The family of phase trajectories diagram of biological competition model.}
+  \label{biological_competion_model2}
+\end{figure}
 
+In the figure, almost all the streamlines in the first quadrant (corresponding to the meaningful solution in the first quadrant) converge to the fourth equilibrium point, indicating that the fourth equilibrium point has very strong stability. This equilibrium point is The final stable point for any initial conditions.
 
+In the phase trajectory family diagram, there is no closed phase trajectory. Therefore, the equation does not have a periodic oscillation solution.
 
+\subsubsection{Multiple Population}
+
+However, pairwise combinations are not always accurate predictors of outcomes of multi-species interactions, and outcomes are often less consistent in systems with multiple competitors. To accurately predict outcomes of multi-species interactions, it is significant to focus on competition between three or more species.
+
+To simpify the model, we  introduce Gause-Lotka-Volterra (GLV) equations and considering three competitors first. The GLV equations describing the dynamics of $ n $competing populations consist of $ n $ competing populations consist of $ n $first order differential equations:
+
+\begin{equation}
+  \frac{\mathrm{d} N_{i}(t)}{\mathrm{d} t}=r_{i} N_{i}(t)\left[1-\sum_{j=1}^{n} \alpha_{i j} N_{j}(t)\right]
+\end{equation}
+
+Here $ N_{i}(t) $is the number of individuals in the $ i $th population at time $ t $, $ r_i $ is the intrinsic growth rate of the $ i $th populations, and the $ \alpha_{i,j} $are competition coefficients measuring the extent to which the $ j $th species affects the growth rate of the $ i $th.
+
+In order to give a manageable exposition, we henceforth reduce the number of parameters in the three-competitors system by making the symmetry assumptions that (i) $ r_1=r_2=r_3=r $; (ii) with respect to competition, 2 affects 1 as 3 affects 2 as 1 affects 3, i.e., $ \alpha_{12}=\alpha_{23}=\alpha_{31}=\alpha $; (iii) similarly $ \beta_{21}=\beta_{32}=\beta_{13}=\beta $. Furthermore, we may rescale the populations $ N_i $ so that effectively $ \alpha_{ii}=1 $, and rescale $ t $ so that in effect $ r=1 $ (which embodies the assumption that $ r>0 $).
+
+For the general case: $ \alpha + \beta > 2 $ and $ \alpha < 1 $. We now consider its solution. For definiteness we take $ \beta > 1 > \alpha $, although all the results apply, mutatis mutandis, to $ \alpha > 1 > \beta $.
+
+At the outset, it is useful to define the positive quantity $ \gamma $:
+
+\begin{equation}
+  \gamma \equiv \alpha + \beta -2
+\end{equation}
+
+And for notation convenience we introduce $ P(t) $, the product of the three populations at time $ t $:
+
+\begin{equation}
+  P(t) \equiv N_1(t)N_2(t)N_3(t)
+\end{equation}
+
+We now get
+
+\begin{equation}
+  \frac{\mathrm{d}{\ln{P}}}{\mathrm{d}t}=-\gamma+(3+\gamma)(1-N_T)
+\end{equation}
+
+Therefore, the total time spent in the neighborhood of such a point in any one cycle is
+
+\begin{equation}
+  \begin{split}
+    \tau &= \tau_{\text{in}}+\tau_{\text{out}} \\
+    \tau_{\text{in}}&\simeq \frac{\gamma t}{2(\beta -1)} \\
+    \tau_{\text{out}}&\simeq \frac{\gamma t}{2(1-\alpha)}
+  \end{split}
+\end{equation}
+
+Thus, $ \tau $ is roughly equals
+
+\begin{equation}
+  \tau \simeq \frac{\gamma(\beta-\alpha)}{2(\beta-1)(1-\alpha)}t
+\end{equation}
+
+TODO
+
+% ----------------
+
+In order to make the results more intuitive, the cellular automata method is used to demonstrate below. We divide an area into many discrete points, and assume that there is at most one population on each point, and fungi can only use resources in adjacent grids. We randomly distribute several populations on the same square land, and the initial number of each population is 1.
+
+The intrensic growth rates of species differs greatly, which causes different distribution of species as shown below. To simplify the shape of figure, we chose 3 species as initial live species. The series below shows the distribution of species. The green cells stand for sources or nutrition, the colored turtles stand for fungal individuals.
+
+TODO
+
+To get more generate interaction rule between multi species, we enlarged initial species to 10, and recorded population amounts continuously. In the figure below, x-axis stands for ticks of iteration, y-axis stands for percent of living species, ans different color stands for different species.
+
+\begin{figure}[H]
+  \small
+  \centering
+  \includegraphics[width=12cm]{density_proportion}
+  \caption{The change of population density proportion.}
+  \label{density_proportion}
+\end{figure}
+
+In round 1400 of iteration, there are just five alive species existing on the land, with others eliminated. And species of brown and blackish green line are in the domiant position in the community. The quantity of dominant species fluctuates periodically, which confirms the previous conclusion of  Gause-Lotka-Volterra equation.
+
+\subsection{Short- and Long-term Trends Analysis}
+
+Considering the influence of climate factors on the long- and short-term trends of fungal growth, we make the following analyse: 
+
+As for the short-term trend, we assume that the external environmental factors will stay the same, and the only factor affecting the competitiveness of fungi in the coexistence of multiple groups is their traits. That is to consider the fungal growth and competitiveness under the currently determined temperature and humidity. So for the short-term trend, we can regard it as the model in the previous section.
+
+As for the long-term trend, we will consider the suitable moisture range of fungi, and investigate the influence of periodic climate change on the growth trend of fungi. It is assumed that the temperature and humidity of the environment change with a period of one year, and that the growth rate of fungi changes with a sinusoidal period, i.e. $ r_i = \frac {r_{i0} \times (2-k_i + \sin(2\pi t/365)\times k_i ) }{2} $($ k_i $ is the factor of fungi growth rate affected by moisture, which reflects the humidity tolerance of fungi). Take $ \left\{\begin{array}{l}
+    r_{1}=0.2, \frac{1}{N_{1}}=0.002, a_{1}=0.0001 \\
+    r_{2}=0.3, \frac{1}{N_{2}}=0.002, a_{2}=0.0002 \\
+    x_{1}(0)=120, x_{2}(0)=120
+    \end{array}\right. $to the equation (\ref{alg_31}), consider the periodic change of $ r_i $,  the population change curves with $ \left\{\begin{array}{l}
+    k_{1}=1 \\
+    k_{2}=1
+    \end{array}\right. $ and $ \left\{\begin{array}{l}
+    k_{1}=0.5 \\
+    k_{2}=1
+    \end{array}\right. $ are drawn respectively, as shown in the figure below. In the figure, the growth rate of $ x_1 $ is slightly lower than that of $ x_2 $, but the competitiveness is slightly better than that of $ x_2 $. the moisture tolerance of $ x_1 $and $ x_2 $ in the left figure is the same, and that of $ x_2 $in the right figure is slightly lower than $ x_1 $.
+
+TODO
+
+\subsection{Examination of the Sensitivity to Rapid Fluctuation}
+
+We consider rapid fluctuation as cases including sudden rainfall, snowfall, and other conditions, that can cause sudden changes in humidity and temperature in the growing environment. The observations under such rapid fluctuation conditions will be regarded as discrete ones, which will cause error in the prediction and analysis of the long-term trend. To make some adjustments  in our regression model, we introduce the robust regression algorithm: The Huber Regression algorithm and Theil-Sen Regression algorithm, to replace the Linear regression algorithm based on the least-square method used previously.
+
+The Huber loss is a robust loss function for regression problems defined as
+
+\begin{equation}
+  \mathcal{L}(y, \hat{y})=\left\{\begin{array}{lll}
+  (y-\hat{y})^{2} & \ldots & |y-\hat{y}| \leq \alpha \\
+  |y-\hat{y}| & \ldots & |y-\hat{y}|>\alpha
+  \end{array}\right.
+\end{equation}
+
+Where $y$ is the target variable, $ \hat{y} $ are the corresponding predictions and $ \alpha \in \mathbb{R}^+ $ is a hyperparameter. It is tempting to look at this loss as the log-likelihood function of an underlying heavy tailed error distribution. Indeed, for absolute errors smaller than $\alpha$ the corresponding distribution resembles the normal distribution, outside this region it coincides with the more heavy-tailed Laplace distribution. This is precisely the reason why this loss is robust against outliers. \cite{huber_regression}
+
+Another alternative to least squares for simple linear regression is Theil-Sen estimation. This more robust method determines the slope of the regression line via the median of the slopes of all lines that can be drawn through the data points:
+
+\begin{equation}
+  r_{\mathrm{TS}}(x, y)=\operatorname{sign}\left(m_{\mathrm{TS}}(y, x)\right) \cdot \sqrt{m_{\mathrm{TS}}(y, x) \cdot m_{\mathrm{TS}}(x, y)}
+\end{equation}
+
+If the median slopes have the same sign, and zero otherwise. The condition to set the measure to zero on sign change of the slopes might seem artificial. However, the median slope generically does not change sign when exchanging $x$ and y, and when it does, the Kendall rank correlation between $x$ and y vanishes.\cite{theil_sen_regression}
+
+Take the regression of decomposition rate and extension rate at 10 $ ^\circ C $ as an example. In order to examine the sensitivity to rapid fluctuation of each algorithm, we will artificially add a number of outliers, and compare the fitting effects of various regression algorithms through graphing.
+
+\begin{figure}[H]
+  \small
+  \centering
+  \includegraphics[width=12cm]{comparison}
+  \caption{The fit of the three models after adding artificial outlier $(50, 1)$. It can be seen that Thei-Sen Regression model has outstanding performance.}
+  \label{comparison}
+\end{figure}
+
+\begin{table}[htb]
+  \centering
+  \caption{The quantitative evaluation results of the three models, where MAE stands for Mean Absolute Error and STD stands for standard deviation. The smaller the MAE and STD, the better. }
+  \begin{center}
+    \begin{tabular}{ccc}
+      \toprule[1.5pt]
+      \makebox[0.3\textwidth][c]{Algorithm} & \makebox[0.2\textwidth][c]{MAE} & \makebox[0.2\textwidth][c]{STD} \\
+      \midrule[1pt]
+      Linear Regression & 6.599 & 10.851 \\
+      Huber Regression & 5.147 & 7.926 \\
+      Theil-Sen Regression & 3.943 & 5.885 \\
+      \bottomrule[1.5pt]
+    \end{tabular}
+  \end{center}
+\end{table}
+
+Theil-Sen Regression model performs the best. It has a certain filtering effect on outlier, and can better present the normal development trend. Because the sudden fluctuation of external conditions can be characterized as outlier, thus, the analysis of the long-term trend that needs to filter out the sudden fluctuation of environmental factors can use the Theil-Sen Regression model to fit the previously mentioned humidity and growth rate.
 
 
 
@@ -492,6 +798,9 @@ Your friends
 
 \end{letter}
 Here are simulation programmes we used in our model as follow.\\
+
+
+
 
 
 \section{Programs}
