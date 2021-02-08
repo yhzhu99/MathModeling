@@ -19,13 +19,13 @@
   
   Fungi play a prominent role in terrestrial ecosystems, and they influence almost every aspect of terrestrial ecosystem functioning. They are the dominant decomposers of woody fibers, with direct impact on global carbon and nutrient dynamics.
 
-  There are several factors affecting fungal decomposition. To simplify the model without loss of generality, we sort traits by Spearson correlation. The growth rate of fungus and fungus' moisture tolerance have highest correlations, thus chosen to be main factors. In Single-factor Regression Model, we evaluate how they affect the decomposition process in the presense of multiple species. With decomposition data under 10, 16, and 22 $^\circ C$, we compute linear relationships between hyphal extension rate, tolerance index and decomposition rate. Then, we build Multi-factors Regression Model using multiple linear regression algorithm, for the sake of describing how different factor combinations have influence on the decomposition rate. 
+  There are several factors affecting fungal decomposition. To simplify the model without loss of generality, we sort traits by Spearson correlation. The growth rate of fungus and fungus' moisture tolerance have highest correlations, thus chosen to be main factors. In Single-factor Regression Model, we evaluate how they affect the decomposition process in the presence of multiple species. With decomposition data under 10, 16, and 22 $^\circ C$, we compute linear relationships between hyphal extension rate, tolerance index and decomposition rate. Then, we build Multi-factors Regression Model using multiple linear regression algorithm, for the sake of describing how different factor combinations have influence on the decomposition rate. 
   
-  Considering the interacions between multiple species, we introduce Fungal Competition Model. Starting from simpliest situation, we build a model on two species with different strength. Through changing relative intrensic rates of two, we get replacement, partial replacement and deadlock relationships. All three cases have been verified in actual experimental data. To generlize to actual situation, next we introduce multispecies competition model. Compared to former algorithm, nonlinear model works on this problem, and result shows there is periodic oscillation solution to this equation but no equilibrium point. Regarding the changing atmospheric trends, we also take soil and climate factors into consideration on the basis of former model. To visually observe the evolution of the community, cellular automata has been utilized to simulate this process.
+  Considering the interactions between multiple species, we introduce Fungal Competition Model. Starting from simplest situation, we build a model on two species with different strength. Through changing relative intrinsic rates of two, we get replacement, partial replacement and deadlock relationships. All three cases have been verified in actual experimental data. To generalize to actual situation, next we introduce multi-species competition model. Compared to former algorithm, nonlinear model works on this problem, and result shows there is periodic oscillation solution to this equation but no equilibrium point. Regarding the changing atmospheric trends, we also take soil and climate factors into consideration on the basis of former model. To visually observe the evolution of the community, cellular automata has been utilized to simulate this process.
   
-  After that, we use Fungal Combination Model to predict advantages and disadvantages for species or combinations in several senarios. Based on the cellular automata before, we get prediction curve of 3 species, 10 species and one without climate change as reference. At last, we use Simpson Index to measure the biodiversity, and predict how it has impact on overall efficency in the Diversity of Fungal Communities Model.
+  After that, we use Fungal Combination Model to predict advantages and disadvantages for species or combinations in several scenarios. Based on the cellular automata before, we get prediction curve of 3 species, 10 species and one without climate change as reference. At last, we use Simpson Index to measure the biodiversity, and predict how it has impact on overall efficiency in the Diversity of Fungal Communities Model.
   
-  What's more, in the sensitivity analysis, we focus on temprature and moisture's variation range, in order to analyze their impacts on community density. Finally, we write an article for an introductory biology textbook, to discuss how people understand fungi's ecological role these years. 
+  What's more, in the sensitivity analysis, we focus on temperature and moisture's variation range, in order to analyze their impacts on community density. Finally, we write an article for an introductory biology textbook, to discuss how people understand the ecological role of fungi these years. 
 
 \begin{keywords}
   Fungus Community; Decomposition Process; Carbon Cycle
@@ -164,7 +164,7 @@ We sort the calculation results corresponding to each trait according to the Spe
 
 The results show that the growth rate and moisture tolerance of fungi are closely related to the decomposition process. 
 
-Below, based on the decomposition data of 34 species of single fungus populations collected under the condition of coexistence of multiple fungi, we will regression and predict the decomposition rate of fungi, focusing on the growth rate of a single type of hyphae The relationship with decomposition rate, and the relationship between hyphae's moisture resistance and decomposition rate. 
+Below, based on the decomposition data of 34 species of single fungus populations collected under the condition of coexistence of multiple fungi, we will regression and predict the decomposition rate of fungi, focusing on the growth rate of a single type of hyphae The relationship with decomposition rate, and the relationship between the moisture resistance and decomposition rate of hyphae. 
 
 \subsection{The Fundamentals of Linear Regression}
 
@@ -295,7 +295,7 @@ It indicates that the greater the $mo $, the worse the adaptability of the fungu
 
 \subsection{Decomposition Rate and Extension Rate Relationship}
 
-Then we control the moisture to remain unchanged. Taking into account the influence of temperature on the decomposition rate,  We perform linear fitting on the depositoin rate and the hypohal extension rate under $ T=10, 16, 22^{\circ}C $ respectively. We get the following results. 
+Then we control the moisture to remain unchanged. Taking into account the influence of temperature on the decomposition rate,  We perform linear fitting on the deposition rate and the hyphal extension rate under $ T=10, 16, 22^{\circ}C $ respectively. We get the following results. 
 
 \begin{figure}[H]
   \small
@@ -601,11 +601,11 @@ There are four equilibrium points in the diagram:
 
 The first equilibrium point,  $ (0,0) $ at the bottom left, i.e.the case where the numbers of both species are 0, is an unstable equilibrium point. All the arrows are pointing away from the equilibrium point, which means that the tiny disturbance near the equilibrium point will eventually go far away from the equilibrium point. In other words, as long as there are a small number of species living here, they will eventually multiply and reach another equilibrium point;
 
-The second equilibrium point,  $(0,N_2) $ at the top left, i.e. with only species  $ x_2 $ existing, belongs to the unstable equilibrium point (saddle point), and only the arrow on the vertical line past this point points to it. But all the other arrows point away from that, which means the equilibrium point is more stable than $ (0,0) $, but it is also unstable. As long as there is a small amount of species $ x_1 $, it wiill be far away from the current equilibrium point due to competition;
+The second equilibrium point,  $(0,N_2) $ at the top left, i.e. with only species  $ x_2 $ existing, belongs to the unstable equilibrium point (saddle point), and only the arrow on the vertical line past this point points to it. But all the other arrows point away from that, which means the equilibrium point is more stable than $ (0,0) $, but it is also unstable. As long as there is a small amount of species $ x_1 $, it will be far away from the current equilibrium point due to competition;
 
 The third equilibrium point, $ (N_1,0) $ at the bottom right, is the case of only species $ x_1 $ exist, belongs to the unstable equilibrium point (saddle point). Only the arrow on the horizontal line past this point points to it. But all the other arrows move away from the equilibrium point, which means that the stability of the equilibrium point is stronger than $ (0,0) $, but it is also unstable. As long as there are a small amount of species $ x_2 $, it will be far away from the current point due to competition. 
 
-The last equilibrium point, is $ \left(\frac{N_{1} r_{2}\left(a_{1} N_{2}-r_{1}\right)}{a_{1} a_{2} N_{1} N_{2}-r 1^{r} 2}, \frac{N_{2} r_{1}\left(a_{2} N_{1}-r_{2}\right)}{a_{1} a_{2} N_{1} N_{2}-r_{1} r_{2}}\right)$at the upper right.  Both species exist and reach a balanced state, which means a stable equilibrium point. All the arrows near the point point to it, which means that even if it deviates from the balance pointequilibrium point, it will eventually go back to the balance point.
+The last equilibrium point, is $ \left(\frac{N_{1} r_{2}\left(a_{1} N_{2}-r_{1}\right)}{a_{1} a_{2} N_{1} N_{2}-r 1^{r} 2}, \frac{N_{2} r_{1}\left(a_{2} N_{1}-r_{2}\right)}{a_{1} a_{2} N_{1} N_{2}-r_{1} r_{2}}\right)$at the upper right.  Both species exist and reach a balanced state, which means a stable equilibrium point. All the arrows near the point point to it, which means that even if it deviates from the balance point to equilibrium point, it will eventually go back to the balance point.
 
 For more clearly reflection of the flow situation at the equilibrium point, we draw the diagram of family of phase pathway (code in appendix).
 
@@ -625,7 +625,7 @@ In the phase trajectory family diagram, there is no closed phase trajectory. The
 
 However, pairwise combinations are not always accurate predictors of outcomes of multi-species interactions, and outcomes are often less consistent in systems with multiple competitors. To accurately predict outcomes of multi-species interactions, it is significant to focus on competition between three or more species.
 
-To simpify the model, we  introduce Gause-Lotka-Volterra (GLV) equations and considering three competitors first. The GLV equations describing the dynamics of $ n $competing populations consist of $ n $ competing populations consist of $ n $first order differential equations:
+To simplify the model, we  introduce Gause-Lotka-Volterra (GLV) equations and considering three competitors first. The GLV equations describing the dynamics of $ n $competing populations consist of $ n $ competing populations consist of $ n $first order differential equations:
 
 \begin{equation}
   \frac{\mathrm{d} N_{i}(t)}{\mathrm{d} t}=r_{i} N_{i}(t)\left[1-\sum_{j=1}^{n} \alpha_{i j} N_{j}(t)\right]
@@ -677,7 +677,7 @@ TODO
 
 In order to make the results more intuitive, the cellular automata method is used to demonstrate below. We divide an area into many discrete points, and assume that there is at most one population on each point, and fungi can only use resources in adjacent grids. We randomly distribute several populations on the same square land, and the initial number of each population is 1.
 
-The intrensic growth rates of species differs greatly, which causes different distribution of species as shown below. To simplify the shape of figure, we chose 3 species as initial live species. The series below shows the distribution of species. The green cells stand for sources or nutrition, the colored turtles stand for fungal individuals.
+The intrinsic growth rates of species differs greatly, which causes different distribution of species as shown below. To simplify the shape of figure, we chose 3 species as initial live species. The series below shows the distribution of species. The green cells stand for sources or nutrition, the colored turtles stand for fungal individuals.
 
 TODO
 
@@ -691,7 +691,7 @@ To get more generate interaction rule between multi species, we enlarged initial
   \label{density_proportion}
 \end{figure}
 
-In round 1400 of iteration, there are just five alive species existing on the land, with others eliminated. And species of brown and blackish green line are in the domiant position in the community. The quantity of dominant species fluctuates periodically, which confirms the previous conclusion of  Gause-Lotka-Volterra equation.
+In round 1400 of iteration, there are just five alive species existing on the land, with others eliminated. And species of brown and blackish green line are in the dominate position in the community. The quantity of dominant species fluctuates periodically, which confirms the previous conclusion of  Gause-Lotka-Volterra equation.
 
 \subsection{Short- and Long-term Trends Analysis}
 
@@ -763,6 +763,84 @@ Take the regression of decomposition rate and extension rate at 10 $ ^\circ C $ 
 \end{table}
 
 Theil-Sen Regression model performs the best. It has a certain filtering effect on outlier, and can better present the normal development trend. Because the sudden fluctuation of external conditions can be characterized as outlier, thus, the analysis of the long-term trend that needs to filter out the sudden fluctuation of environmental factors can use the Theil-Sen Regression model to fit the previously mentioned humidity and growth rate.
+
+\section{Problem 4:  Fungal Combinations Model}
+
+Because the optimal temperature, moisture and other parameters of different populations are very different, and there are interactions between populations. Therefore, under different environmental conditions, stable populations, dominant populations, and the entire fungal community have very different decomposition rates for dead branches and leaves. 
+
+\subsection{Abstract the Parameters of Different Climatic Conditions}
+
+Here, the annual precipitation laws of different climate types are used to indicate the range of humidity changes. For example, arid areas are dry and less rainy throughout the year, with small changes in humidity, while temperate areas have obvious dry and rainy seasons with large humidity changes. We normalize the humidity change range to $[-1,1] $, $ -1 $ represents a large humidity change range, and $ 1 $ represents a small humidity change.
+
+For regions with different climate types, temperature differences in different seasons, different weather, and different time periods are also considered. For the sake of simplifying the model, the analysis is carried out here based on the daily average temperature only in units of four seasons in a year. Among them, in order to reduce the sudden change that may be caused by the temperature difference under different weather conditions, the fitting is performed by the previously described Theil-Sen Regression algorithm with better performance.
+
+\begin{table}[htb]
+  \centering
+  \caption{The quantitative evaluation results of the three models, where MAE stands for Mean Absolute Error and STD stands for standard deviation. The smaller the MAE and STD, the better. }
+  \begin{center}
+    \begin{tabular}{ccc}
+      \toprule[1.5pt]
+      \makebox[0.3\textwidth][c]{Area} & \makebox[0.3\textwidth][c]{Temperature $^\circ C$ \cite{temperature}} & \makebox[0.15\textwidth][c]{Moisture Index} \\
+      \midrule[1pt]
+      Arid (Tarim Basin)& [14.2, 24.4, 11.1 -4.7] & 1 \\
+      Semi-arid (Bismarck) & [-8, 6, 23, 8] & 0.2 \\
+      Temperate (Beijing) & [3, 22, 26, 6.5] & -1 \\
+      Arboreal area & 24-28 & 0.8 \\
+      Tropical rain forests (Amazon rainforest) & about 30 & 1 \\
+      \bottomrule[1.5pt]
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\subsection{Prediction of Advantages and Disadvantages in Different Environments }
+
+The community structure varies in different climate scenarios, and its evolution relationship and changes with climate are also more complicated. Below we will use the previous cellular automata model to simulate the entire community. Three kinds of simulations are carried out under each environment. Firstly, the change trend of the three groups is simulated to reflect the evolution relationship of simple community structure; then 10 species are introduced and the observation time is extended to reflect the evolution process of more complex populations; finally, the evolution of climate change The parameters are removed from the initial state of the model as a theoretical reference.
+
+Case 1: In arid zones, there are large temperature fluctuations, low precipitation. This requires higher tolerance for fungi, but causes lower decomposition rate relatively.
+
+TODO
+
+It can be seen from the figure that the stability of the community takes a long time, and populations with comparable viability are more likely to resist extreme environmental conditions. Intolerant colonies cannot join the competition or are eliminated at the beginning. After the community structure is relatively stable, there is a dynamic balance among several populations, and each population shows periodic fluctuations, but because fungi has good tolerance, the overall decomposition situation is relatively stable.
+
+Case 2: In semi-arid area, there is periodic precipitation. Compared with the conditions in Case 1, the requirements for the moisture resistance of fungi are reduced.
+
+TODO
+
+Compared to arid, the environment becomes more mild for fungi, especially for competitive ones in the extension stage. As shown in the middle figure, after around 1000 rounds, more species become extinct. However, without climate change, there may be more species existing in the same patch. This reveals species with both better tolerance and dominance can survive better.
+
+Case 3: In temperate region, resources are relatively more abundant, which can support more individuals.
+
+TODO
+
+As the species abundance increases, the magnitude of the number changes gradually decreases. However, at each moment, the gap between the dominant species and others is more evident. Under ideal conditions, there are more competitors existing at the same time, which reveals climate changes have played a role in natural selection.
+
+Case 4: In arboreal, The content of humus increase, the soil has higher temperature and moisture, which can accommodate more kinds of fungi.
+
+TODO
+
+It can be seen from the comparison that under the same climate conditions, the change trend of the three populations and the multi populations is roughly the same. There is no absolute dominant species in the community. When there are fluctuations in the environment, there is a shift between several populations with higher niche. Species with higher extension rate in this situation are in an advanced position in the community.
+
+Case 5: In tropical rain forests, the climate is more stable, suitable for more species of fungi. And the chemical metabolism is accelerated, ground litter and woody fibers is rich, and there is a continuous supply of nutrient in the soil.
+
+TODO
+
+In this case, the community composition is more complex and the dominance is reduced. After slight climate change, the ecological structure remains stable. When the C element is used as the main measurement standard, the dominant species in the figure above have a greater impact. When other elements or components are used as the measurement standard, the results may be inverted. On the whole, the community is more abundant, the dominant population is different under different standards, and the overall decomposition efficiency is high.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
